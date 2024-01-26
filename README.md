@@ -14,13 +14,13 @@ Vous trouverez dans le dossier [donnes/bruno](donnes/bruno) une collection qui p
 
 Les données brutes au format json peuvent être extraites avec les commandes suivantes.
 
-### Feux actifs
+#### Feux actifs
 
 ```bash
 curl -s --request GET "https://cartes.sopfeu.qc.ca/fires?filterChoice=active" | jq
 ```
 
-### Zones et niveau de risque
+#### Zones et niveau de risque
 
 ```bash
 curl -s --request GET https://cartes.sopfeu.qc.ca/risk-zones | jq
@@ -41,13 +41,11 @@ Le dossier [home-assistant/packages](home-assistant/packages) contient un fichie
 
 #### Configuration
 
-Faites un "Rechercher et remplacer" dans le fichier `sopfeu.yaml` et remplacé le valeurs identifiées au début du fichier par les valeurs correspondantes
+Faites un "Rechercher et remplacer" dans le fichier `sopfeu.yaml` et remplacez les valeurs identifiées au début du fichier par les valeurs correspondantes
 
 ### Autres plateforme
 
 Si vous utilisez une autre plate-forme qu'Home-Assistant et vous intégrez ces données ce serai grandement apprécié que vous partagiez vos configurations pour les ajouter.
-
-**SVP, ne réduisez pas inutilement le scan_interval, une vérification aux heures est amplement suffisante et évite de faire des requêtes inutiles aux serveurs de SOPFEU.**
 
 ## Geojson et alertes
 
