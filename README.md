@@ -1,3 +1,8 @@
+**En date du 6 juin 2024 la SOPFEU semble avoir mis en place un mécanisme de blocage de l'accès directe aux fichiers nous permettant de récupérer les niveaux de risque ainsi que les coordonnées des feux actifs. https://github.com/domo-quebec/sopfeu/issues/2**
+
+**Nous vous invitons à désactiver vos automatismes de rafraichissement jusqu'à ce qu'une solution puisse être trouvé.**
+
+
 # SOPFEU
 
 La [SOPFEU](https://sopfeu.qc.ca) est un organisme de prévention des incendies qui offre un indice du danger d'incendie ainsi que les recommandations correspondantes à chaque niveau.
