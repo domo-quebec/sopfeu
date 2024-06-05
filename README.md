@@ -143,7 +143,7 @@ Source: [https://sopfeu.qc.ca/comment-calcule-t-on-le-danger-dincendie/](https:/
 </details>
 
 <details>
-<summary>Liste de valeur Zone de risques (Région SOPFEU)</summary>
+<summary>Liste de valeur Zone de risques (Région SOPFEU) (##ZDR##)</summary>
 
 | Zone | Emplacement               |
 | ---- | ------------------------- |
@@ -215,7 +215,7 @@ Source: [https://sopfeu.qc.ca/comment-calcule-t-on-le-danger-dincendie/](https:/
 </details>
 
 <details>
-<summary>Liste des codes MRC</summary>
+<summary>Liste des codes MRC (##MRC##)</summary>
 
 | id  | MRC                         |
 | --- | --------------------------- |
@@ -291,7 +291,7 @@ Source: [https://sopfeu.qc.ca/comment-calcule-t-on-le-danger-dincendie/](https:/
 </details>
 
 <details>
-<summary>Liste des codes des Unitées de Gestion</summary>
+<summary>Liste des codes des Unitées de Gestion (##SCTR##)</summary>
 
 | id  | Unité                                  |
 | --- | -------------------------------------- |
