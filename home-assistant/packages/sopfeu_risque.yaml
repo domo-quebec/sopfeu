@@ -7,9 +7,10 @@ automation:
   condition:
     - condition: template
       value_template: "{{ now().month in [4,5,6,7,8,9,10] }}"
-    - condition: state
-      entity_id: input_boolean.sopfeu_saison_en_cours
-      state: "on"
+    # Utilisation optionelle d'un input boolean pour activer ou désactiver le rafraichissement SOPFEU
+    # - condition: state
+    #   entity_id: input_boolean.sopfeu_saison_en_cours
+    #   state: "on"
   action:
     - service: homeassistant.update_entity
       target:
