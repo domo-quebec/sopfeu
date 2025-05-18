@@ -1,0 +1,26 @@
+meta {
+  name: mesures-preventives
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/mesures-preventives?ifco=true&rtf12_20=true&rtf8_20=true&rtf24=true&prohibitionAcces=true&fermeture=true&interdictionVol=true&zoneRisque=true&lat&lon&rayonKm=500&test=true
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ifco: true
+  rtf12_20: true
+  rtf8_20: true
+  rtf24: true
+  prohibitionAcces: true
+  fermeture: true
+  interdictionVol: true
+  zoneRisque: true
+  lat: 
+  lon: 
+  rayonKm: 500
+  test: true
+}

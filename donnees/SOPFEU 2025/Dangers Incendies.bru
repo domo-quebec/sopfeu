@@ -1,0 +1,21 @@
+meta {
+  name: Dangers Incendies
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/danger-incendie?test=true
+  body: none
+  auth: inherit
+}
+
+params:query {
+  test: true
+  ~noMun: 
+  ~lat: 
+  ~lon: 
+  ~rayonKm: 1
+  ~noRegionAdm: 
+  ~noMrc: 
+}

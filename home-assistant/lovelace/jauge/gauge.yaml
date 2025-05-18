@@ -5,17 +5,17 @@ max: 5.5
 needle: true
 segments:
   - from: 0.5
-    color: '#314d9c'
+    color: "#28398a"
     label: Bas
   - from: 1.5
-    color: '#64b14a'
+    color: "#37a048"
     label: Modéré
   - from: 2.5
-    color: '#f9cb22'
+    color: "#f4ed1f"
     label: Élevé
   - from: 3.5
-    color: '#e9892f'
+    color: "#ee7c22"
     label: Très Élevé
   - from: 4.5
-    color: '#db2c33'
+    color: "#c92127"
     label: Extrême

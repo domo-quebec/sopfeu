@@ -1,0 +1,23 @@
+meta {
+  name: Feux
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux?test=true
+  body: none
+  auth: inherit
+}
+
+params:query {
+  test: true
+  ~lat: 
+  ~lon: 
+  ~rayonKm: 20
+  ~conditions: 0,1,2,3,4,5,6
+  ~intensive: 1
+  ~nordique: 0
+  ~noRegionAdm: 
+  ~noMrc: 
+}

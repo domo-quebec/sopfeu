@@ -1,0 +1,58 @@
+automation:
+  alias: SOPFEU - Rafraichir les données risque
+  mode: single
+  trigger:
+    - platform: time_pattern
+      minutes: /59
+  condition:
+    - condition: template
+      value_template: "{{ now().month in [4,5,6,7,8,9,10] }}"
+    - condition: state
+      entity_id: input_boolean.sopfeu_saison_en_cours
+      state: "on"
+  action:
+    - service: homeassistant.update_entity
+      target:
+        entity_id:
+          - sensor.sopfeu_risque_d_incendie_actuel
+      data: {}
+
+rest:
+  - resource: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/danger-incendie
+    method: GET
+    params:
+      lat: "{{ state_attr('zone.home', 'latitude') }}"
+      lon: "{{ state_attr('zone.home', 'longitude') }}"
+      rayonKm: "1"
+      test: "false"
+    sensor:
+      - name: SOPFEU Risque d'incendie actuel
+        unique_id: SOPFEU_risque_actuel
+        value_template: >
+          {{ value_json[0][0].DangerJour1.Id }}
+        json_attributes_path: "$[0][0].DangerJour1"
+        json_attributes:
+          - Id
+          - Couleur
+          - DescriptionFr
+          - DescriptionEn
+      - name: SOPFEU Risque d'incendie demain
+        unique_id: SOPFEU_risque_demain
+        value_template: >
+          {{ value_json[0][0].DangerJour2.Id }}
+        json_attributes_path: "$[0][0].DangerJour2"
+        json_attributes:
+          - Id
+          - Couleur
+          - DescriptionFr
+          - DescriptionEn
+      - name: SOPFEU Risque d'incendie après-demain
+        unique_id: SOPFEU_risque_apres_demain
+        value_template: >
+          {{ value_json[0][0].DangerJour3.Id }}
+        json_attributes_path: "$[0][0].DangerJour3"
+        json_attributes:
+          - Id
+          - Couleur
+          - DescriptionFr
+          - DescriptionEn
