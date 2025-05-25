@@ -1,0 +1,30 @@
+automation:
+  alias: SOPFEU - Rafraichir les données
+  mode: single
+  trigger:
+    - platform: time_pattern
+      minutes: /5
+  condition:
+    - condition: template
+      value_template: "{{ now().month in [4,5,6,7,8,9,10] }}"
+    # Utilisation optionelle d'un input boolean pour activer ou désactiver le rafraichissement SOPFEU
+    # - condition: state
+    #   entity_id: input_boolean.sopfeu_saison_en_cours
+    #   state: "on"
+  action:
+    - service: homeassistant.update_entity
+      target:
+        entity_id:
+          - sensor.sopfeu_feux_actifs_data_maison
+      data: {}
+
+command_line:
+  - sensor:
+      name: SOPFEU Feux actifs data Maison
+      unique_id: SOPFEU_feux_actifs_data_maison
+      scan_interval: 86400
+      value_template: "OK"
+      command: |-
+        curl -s "https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux?lat={{ state_attr('zone.home', 'latitude') }}&lon={{ state_attr('zone.home', 'longitude') }}&rayonKm=20&test=false" | jq > /config/www/sopfeu-fire.json
+        jq 'if length == 0 then {type: "FeatureCollection", features: []} else {type: "FeatureCollection", features: map({type: "Feature", geometry: {type: "Point", coordinates: [.Lon, .Lat]}, properties: {id: .NoFeu, year: .Annee, name: .Designation, zone: .Zone, condition: .Condition.DescriptionFr, conditionEn: .Condition.DescriptionEn, cause: .Cause.DescriptionFr, causeEn: .Cause.DescriptionEn, area: .SuperficieHa, startDate: .DateDeDebut, extinguishDate: .DateEteint, region: .RegionAdministrative.Nom, mrc: .Mrc.Nom, municipality: .Municipalite.Nom, lastModified: .DateDerniereModification}})} end' /config/www/sopfeu-fire.json > /config/www/sopfeu.geojson
+

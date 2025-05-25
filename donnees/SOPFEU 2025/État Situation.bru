@@ -1,0 +1,20 @@
+meta {
+  name: État Situation
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux-etat-situation?intensive=true&noRegionAdm
+  body: none
+  auth: inherit
+}
+
+params:query {
+  intensive: true
+  noRegionAdm: 
+  ~nordique: false
+  ~noMrc: 
+  ~noMun: 
+  ~dateHistorique: 
+}
