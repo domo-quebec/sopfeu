@@ -1,0 +1,161 @@
+
+rest:
+  - resource: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux-etat-situation
+    method: GET
+    params:
+      intensive: "true"
+    sensor:
+      - name: SOPFEU Feux Actifs au Québec
+        unique_id: SOPFEU_situation_quebec
+        unit_of_measurement: "feux"
+        value_template: >
+          {% if value_json is mapping %}
+            {{ value_json.FeuxEtatSituationStats.NbFeuxActifs }}
+          {% elif value_json is iterable and value_json|length > 0 %}
+            {{ value_json[0].FeuxEtatSituationStats.NbFeuxActifs }}
+          {% else %}
+            0
+          {% endif %}
+        json_attributes_path: "$.FeuxEtatSituationStats"
+        json_attributes:
+          - NbFeuxAnnuel
+          - NbFeuxMoyenne10Ans
+          - NbFeuxActifs
+          - NbFeuxActifs24HeuresAvant
+          - NbFeuxActifs7JoursAvant
+          - SuperficieHaBruleeAnnuelle
+          - SuperficieHaBruleeAnnuelle7JoursAvant
+          - NbFeuxNouveauxDerniers24Heures
+          - NbFeuxEteintsDerniers24Heures
+          - NbAnnuelFeuxCauseFoudre
+          - NbAnnuelFeuxCauseHumaine
+          - NbAnnuelFeuxCauseIndeterminee
+          - NbFeuxNouveau
+          - NbFeuxNouveaux24HeuresAvant
+          - NbFeuxRecense
+          - NbFeuxSousObservation
+          - NbFeuxHorsControle
+          - NbFeuxContenu
+          - NbFeuxMaitrise
+          - DateDerniereModification
+
+  - resource: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux-etat-situation
+    method: GET
+    params:
+      intensive: "true"
+      noRegionAdm: 15
+    sensor:
+      - name: SOPFEU Feux Actifs Laurentides
+        unique_id: SOPFEU_situation_Laurentides
+        unit_of_measurement: "feux"
+        value_template: >
+          {% if value_json is mapping %}
+            {{ value_json.FeuxEtatSituationStats.NbFeuxActifs }}
+          {% elif value_json is iterable and value_json|length > 0 %}
+            {{ value_json[0].FeuxEtatSituationStats.NbFeuxActifs }}
+          {% else %}
+            0
+          {% endif %}
+        json_attributes_path: "$.FeuxEtatSituationStats"
+        json_attributes:
+          - NbFeuxAnnuel
+          - NbFeuxMoyenne10Ans
+          - NbFeuxActifs
+          - NbFeuxActifs24HeuresAvant
+          - NbFeuxActifs7JoursAvant
+          - SuperficieHaBruleeAnnuelle
+          - SuperficieHaBruleeAnnuelle7JoursAvant
+          - NbFeuxNouveauxDerniers24Heures
+          - NbFeuxEteintsDerniers24Heures
+          - NbAnnuelFeuxCauseFoudre
+          - NbAnnuelFeuxCauseHumaine
+          - NbAnnuelFeuxCauseIndeterminee
+          - NbFeuxNouveau
+          - NbFeuxNouveaux24HeuresAvant
+          - NbFeuxRecense
+          - NbFeuxSousObservation
+          - NbFeuxHorsControle
+          - NbFeuxContenu
+          - NbFeuxMaitrise
+          - DateDerniereModification
+  
+  - resource: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux-etat-situation
+    method: GET
+    params:
+      intensive: "true"
+      noMrc: 770
+    sensor:
+      - name: SOPFEU Feux Actifs Pays-d'en-Haut
+        unique_id: SOPFEU_situation_pays_d_en_haut
+        unit_of_measurement: "feux"
+        value_template: >
+          {% if value_json is mapping %}
+            {{ value_json.FeuxEtatSituationStats.NbFeuxActifs }}
+          {% elif value_json is iterable and value_json|length > 0 %}
+            {{ value_json[0].FeuxEtatSituationStats.NbFeuxActifs }}
+          {% else %}
+            0
+          {% endif %}
+        json_attributes_path: "$.FeuxEtatSituationStats"
+        json_attributes:
+          - NbFeuxAnnuel
+          - NbFeuxMoyenne10Ans
+          - NbFeuxActifs
+          - NbFeuxActifs24HeuresAvant
+          - NbFeuxActifs7JoursAvant
+          - SuperficieHaBruleeAnnuelle
+          - SuperficieHaBruleeAnnuelle7JoursAvant
+          - NbFeuxNouveauxDerniers24Heures
+          - NbFeuxEteintsDerniers24Heures
+          - NbAnnuelFeuxCauseFoudre
+          - NbAnnuelFeuxCauseHumaine
+          - NbAnnuelFeuxCauseIndeterminee
+          - NbFeuxNouveau
+          - NbFeuxNouveaux24HeuresAvant
+          - NbFeuxRecense
+          - NbFeuxSousObservation
+          - NbFeuxHorsControle
+          - NbFeuxContenu
+          - NbFeuxMaitrise
+          - DateDerniereModification
+
+  - resource: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux-etat-situation
+    method: GET
+    params:
+      intensive: "true"
+      noMun: 77022
+    sensor:
+      - name: SOPFEU Feux Actifs Sainte-Adèle
+        unique_id: SOPFEU_situation_sainte_adele
+        unit_of_measurement: "feux"
+        value_template: >
+          {% if value_json is mapping %}
+            {{ value_json.FeuxEtatSituationStats.NbFeuxActifs }}
+          {% elif value_json is iterable and value_json|length > 0 %}
+            {{ value_json[0].FeuxEtatSituationStats.NbFeuxActifs }}
+          {% else %}
+            0
+          {% endif %}
+        json_attributes_path: "$.FeuxEtatSituationStats"
+        json_attributes:
+          - NbFeuxAnnuel
+          - NbFeuxMoyenne10Ans
+          - NbFeuxActifs
+          - NbFeuxActifs24HeuresAvant
+          - NbFeuxActifs7JoursAvant
+          - SuperficieHaBruleeAnnuelle
+          - SuperficieHaBruleeAnnuelle7JoursAvant
+          - NbFeuxNouveauxDerniers24Heures
+          - NbFeuxEteintsDerniers24Heures
+          - NbAnnuelFeuxCauseFoudre
+          - NbAnnuelFeuxCauseHumaine
+          - NbAnnuelFeuxCauseIndeterminee
+          - NbFeuxNouveau
+          - NbFeuxNouveaux24HeuresAvant
+          - NbFeuxRecense
+          - NbFeuxSousObservation
+          - NbFeuxHorsControle
+          - NbFeuxContenu
+          - NbFeuxMaitrise
+          - DateDerniereModification
+
