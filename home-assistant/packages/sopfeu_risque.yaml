@@ -22,8 +22,8 @@ rest:
   - resource: https://geofeux.sopfeu.qc.ca/sopfeu-api/public/danger-incendie
     method: GET
     params:
-      lat: "{{ state_attr('zone.home', 'latitude') }}"
-      lon: "{{ state_attr('zone.home', 'longitude') }}"
+      lat: "{{ state_attr('zone.home', 'latitude') | round(5) }}"
+      lon: "{{ state_attr('zone.home', 'longitude') | round(5) }}"
       rayonKm: "1"
       test: "false"
     sensor:

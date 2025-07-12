@@ -25,6 +25,6 @@ command_line:
       scan_interval: 86400
       value_template: "OK"
       command: |-
-        curl -s "https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux?lat={{ state_attr('zone.home', 'latitude') }}&lon={{ state_attr('zone.home', 'longitude') }}&rayonKm=20&test=false" | jq > /config/www/sopfeu-fire.json
+        curl -s "https://geofeux.sopfeu.qc.ca/sopfeu-api/public/feux?lat={{ state_attr('zone.home', 'latitude') | round(5) }}&lon={{ state_attr('zone.home', 'longitude') | round(5) }}&rayonKm=20&test=false" | jq > /config/www/sopfeu-fire.json
         jq 'if length == 0 then {type: "FeatureCollection", features: []} else {type: "FeatureCollection", features: map({type: "Feature", geometry: {type: "Point", coordinates: [.Lon, .Lat]}, properties: {id: .NoFeu, year: .Annee, name: .Designation, zone: .Zone, condition: .Condition.DescriptionFr, conditionEn: .Condition.DescriptionEn, cause: .Cause.DescriptionFr, causeEn: .Cause.DescriptionEn, area: .SuperficieHa, startDate: .DateDeDebut, extinguishDate: .DateEteint, region: .RegionAdministrative.Nom, mrc: .Mrc.Nom, municipality: .Municipalite.Nom, lastModified: .DateDerniereModification}})} end' /config/www/sopfeu-fire.json > /config/www/sopfeu.geojson
 
